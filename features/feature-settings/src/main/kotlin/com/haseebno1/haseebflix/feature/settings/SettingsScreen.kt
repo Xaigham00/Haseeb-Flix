@@ -89,7 +89,7 @@ private fun SettingsScreen(uiState: SettingsUiState, modifier: Modifier = Modifi
         item {
             DeveloperSpotlightCard(
                 onGitHubClick = {
-                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/haseebno1"))
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Xaigham00/"))
                     context.startActivity(intent)
                 }
             )
@@ -181,7 +181,7 @@ private fun DeveloperSpotlightCard(
                         horizontalArrangement = Arrangement.spacedBy(6.dp)
                     ) {
                         Text(
-                            text = "Abdul Haseeb",
+                            text = "Zaigham Warraich",
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
                             color = Color.White
@@ -195,7 +195,7 @@ private fun DeveloperSpotlightCard(
                                 .padding(horizontal = 6.dp, vertical = 2.dp)
                         ) {
                             Text(
-                                text = "CREATOR",
+                                text = "DEVELOPER",
                                 fontSize = 9.sp,
                                 fontWeight = FontWeight.Black,
                                 color = Color.White
@@ -208,7 +208,7 @@ private fun DeveloperSpotlightCard(
                         color = HaseebFlixTheme.colors.grey
                     )
                     Text(
-                        text = "@haseebno1",
+                        text = "@Xaigham00",
                         fontSize = 13.sp,
                         fontWeight = FontWeight.SemiBold,
                         color = HaseebFlixTheme.colors.primaryRed,
@@ -266,12 +266,12 @@ private fun DeveloperSpotlightCard(
                     color = HaseebFlixTheme.colors.grey
                 )
                 Text(
-                    text = "HaseebFlix is published and operated by Abdul Haseeb (we, us).",
+                    text = "Zee Flix is published and operated by Zaigham Warraich",
                     fontSize = 11.sp,
                     color = HaseebFlixTheme.colors.grey
                 )
                 Text(
-                    text = "Privacy contact: abdulhaseebno1@gmail.com",
+                    text = "Privacy contact: xaighamwarraich@gmail.com",
                     fontSize = 11.sp,
                     color = HaseebFlixTheme.colors.grey
                 )
