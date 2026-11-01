@@ -29,7 +29,7 @@ jobs:
       
       - name: Create local.properties
         run: |
-          echo "haseebflix.apikey=ci-placeholder" > local.properties
+          echo "haseebflix.apikey=${{ secrets.HASEEBFLIX_API_KEY }}" > local.properties
           echo "haseebflix.player.baseurl=https://embed.vidrift.net" >> local.properties
 
       - name: Build debug APK
