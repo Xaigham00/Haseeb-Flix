@@ -73,7 +73,6 @@ class PlayerViewModel @Inject constructor(
 }
 
 private val AppPlayerOptions = PlayerOptions(
-    brand = "Zee Flix",
     brandColorHex = "e50914",
     brandLogoUrl = "https://i.postimg.cc/fLt3VcZs/logo.png",
     watermark = true,
