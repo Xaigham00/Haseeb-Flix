@@ -228,6 +228,24 @@ internal fun PlayerWebView(
                             if (host && host.tagName !== 'VIDEO' && btn.parentNode !== host) host.appendChild(btn);
                             apply();
                           }
+                          var timer = null;
+function showBtn(){
+  if (!btn) return;
+  btn.style.transition = 'opacity .3s';
+  btn.style.opacity = '1';
+  btn.style.pointerEvents = 'auto';
+  clearTimeout(timer);
+  timer = setTimeout(function(){
+    btn.style.opacity = '0';
+    btn.style.pointerEvents = 'none';
+  }, 3000);
+}
+['touchstart','pointerdown','mousemove','click'].forEach(function(ev){
+  document.addEventListener(ev, showBtn, true);
+});
+setInterval(function(){
+  if (btn && !btn.__seen){ btn.__seen = true; showBtn(); }
+}, 500);
                           setInterval(ensure, 1000);
                         })();
                     """.trimIndent()
