@@ -200,6 +200,39 @@ internal fun PlayerWebView(
                         }
                     }
                 }
+                                if (WebViewFeature.isFeatureSupported(WebViewFeature.DOCUMENT_START_SCRIPT)) {
+                    val stretchScript = """
+                        (function(){
+                          if (window.__hfStretch) return;
+                          window.__hfStretch = true;
+                          var modes = [['contain','Fit'],['fill','Stretch'],['cover','Zoom']];
+                          var i = 0, btn = null;
+                          var st = document.createElement('style');
+                          function apply(){
+                            st.textContent = 'video{object-fit:' + modes[i][0] + ' !important}';
+                            if (btn) btn.textContent = modes[i][1];
+                          }
+                          function ensure(){
+                            if (!document.querySelector('video')) return;
+                            if (!st.parentNode) (document.head || document.documentElement).appendChild(st);
+                            if (!btn){
+                              btn = document.createElement('button');
+                              btn.style.cssText = 'position:fixed;top:12px;right:12px;z-index:2147483647;padding:6px 12px;border:0;border-radius:6px;background:rgba(0,0,0,.6);color:#fff;font:14px sans-serif;';
+                              btn.addEventListener('click', function(e){
+                                e.stopPropagation();
+                                i = (i + 1) % modes.length;
+                                apply();
+                              });
+                            }
+                            var host = document.fullscreenElement || document.webkitFullscreenElement || document.body;
+                            if (host && host.tagName !== 'VIDEO' && btn.parentNode !== host) host.appendChild(btn);
+                            apply();
+                          }
+                          setInterval(ensure, 1000);
+                        })();
+                    """.trimIndent()
+                    WebViewCompat.addDocumentStartJavaScript(this, stretchScript, setOf("*"))
+                                }
                 webView = this
             }
         },
